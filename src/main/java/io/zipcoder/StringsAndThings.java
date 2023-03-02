@@ -1,6 +1,8 @@
 package io.zipcoder;
 
 
+import java.util.regex.Pattern;
+
 /**
  * @author tariq
  */
@@ -15,7 +17,13 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        String[] arr = input.split(" ");
+        int count = 0;
+        for(String s: arr){
+            if(s.toLowerCase().charAt(s.length()-1) == 'y' || s.toLowerCase().charAt(s.length()-1) == 'z')
+                count++;
+        }
+        return count;
     }
 
     /**
@@ -28,7 +36,7 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+        return base.replace(remove , "");
     }
 
     /**
@@ -40,7 +48,10 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+        Pattern regNot = Pattern.compile("not");
+        Pattern regIs = Pattern.compile("is");
+
+        return regNot.matcher(input).results().count() == regIs.matcher(input).results().count();
     }
 
     /**
@@ -51,7 +62,31 @@ public class StringsAndThings {
      *           gHappy("xxggyygxx") // Should return  false
      */
     public Boolean gIsHappy(String input){
-        return null;
+        //if(!input.contains("g"))
+        //    return true;
+        String[] arr = input.split("");
+        System.out.println(arr.length);
+        if(arr.length == 1) {
+            System.out.println("false on arr.length");
+            return false;
+        }
+        if(arr[arr.length-1].compareTo("g")== 0 && arr[arr.length-1].compareTo("g") != 0){
+            System.out.println("false on last");
+            return false;
+        }
+        if(arr[0].compareTo("g")== 0 && arr[0].compareTo("g") != 0){
+            System.out.println("false on first");
+            return false;
+        }
+        for(int i = 1; i < input.length()-1; i++){
+            if(arr[i].compareTo("g") == 0 && (arr[i+1].compareTo("g") != 0 && arr[i-1].compareTo("g") != 0)) {
+                System.out.println("false on loop " + i);
+                return false;
+            }
+        }
+
+
+        return true;
     }
 
 
@@ -63,6 +98,12 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        int count = 0;
+        String[] arr = input.split("");
+        for(int i = 0; i < arr.length - 3; i++){
+            if(arr[i].compareTo(arr[i+1])==0 && arr[i].compareTo(arr[i+2])==0)
+                count++;
+        }
+        return count;
     }
 }
