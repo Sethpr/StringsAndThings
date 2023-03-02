@@ -65,22 +65,22 @@ public class StringsAndThings {
         //if(!input.contains("g"))
         //    return true;
         String[] arr = input.split("");
-        System.out.println(arr.length);
+        //System.out.println(arr.length);
         if(arr.length == 1) {
-            System.out.println("false on arr.length");
+            //System.out.println("false on arr.length");
             return false;
         }
         if(arr[arr.length-1].compareTo("g")== 0 && arr[arr.length-1].compareTo("g") != 0){
-            System.out.println("false on last");
+            //System.out.println("false on last");
             return false;
         }
         if(arr[0].compareTo("g")== 0 && arr[0].compareTo("g") != 0){
-            System.out.println("false on first");
+            //System.out.println("false on first");
             return false;
         }
         for(int i = 1; i < input.length()-1; i++){
             if(arr[i].compareTo("g") == 0 && (arr[i+1].compareTo("g") != 0 && arr[i-1].compareTo("g") != 0)) {
-                System.out.println("false on loop " + i);
+                //System.out.println("false on loop " + i);
                 return false;
             }
         }
